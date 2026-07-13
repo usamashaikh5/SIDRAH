@@ -10,7 +10,7 @@ export default function Footer() {
               <img src="/logo.png" alt="Makkah Madinah Logo" className="brand-logo-img" />
               <div className="logo-text">
                 <span className="logo-title">Sidrah</span>
-                <span className="logo-subtitle">Tours</span>
+                <span className="logo-subtitle">Tours & Travels</span>
               </div>
             </a>
             <p>
