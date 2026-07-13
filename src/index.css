@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+
+@import './theme.css';
+@import './style.css';
+
+@config "../tailwind.config.js";
+
+/* Custom component base styles */
+.gold-text {
+  color: var(--color-gold);
+}
+
+/* Custom scroll transitions */
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
