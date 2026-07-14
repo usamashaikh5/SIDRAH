@@ -18,14 +18,14 @@ import Footer from './components/Footer';
 export default function App() {
   const [selectedMonth, setSelectedMonth] = useState('September');
   useEffect(() => {
-    // 1. Initialize Lenis Smooth Scroll
+    // 1. Initialize Lenis Smooth Scroll — tuned for butter-smooth feel
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.4,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.8,
     });
 
     // 2. Integrate Lenis with GSAP
@@ -39,9 +39,16 @@ export default function App() {
     
     gsap.ticker.lagSmoothing(0);
 
-    // 3. GSAP Animations Context for clean component lifecycle updates
+    // Helper: add .revealed class to restore CSS hover transitions after GSAP
+    const addRevealed = (selector) => {
+      document.querySelectorAll(selector).forEach(el => el.classList.add('revealed'));
+    };
+
+    // 3. GSAP Animations Context
     const ctx = gsap.context(() => {
-      // Navbar scroll style trigger
+      // =============================================
+      // Navbar: Scroll style + auto-hide/show
+      // =============================================
       ScrollTrigger.create({
         start: 'top -80',
         onUpdate: (self) => {
@@ -55,7 +62,6 @@ export default function App() {
         },
       });
 
-      // Navbar auto-hide/show on scroll
       let lastScroll = 0;
       ScrollTrigger.create({
         onUpdate: (self) => {
@@ -71,183 +77,194 @@ export default function App() {
         },
       });
 
-      // ---- Destination Cards ----
-      gsap.fromTo('.dest-card', {
-        y: 25,
-        opacity: 0
+      // =============================================
+      // Hero Section
+      // =============================================
+      const heroTl = gsap.timeline({ defaults: { ease: 'power3.out', force3D: true } });
+      heroTl
+        .fromTo('.hero-tagline', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 })
+        .fromTo('.hero-title', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, '-=0.5')
+        .fromTo('.hero-description', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.6')
+        .fromTo('.hero-buttons', { y: 25, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.5')
+        .fromTo('.hero-model', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2 }, '-=0.6');
+
+      // =============================================
+      // Section Headers: Smooth cascade
+      // =============================================
+      document.querySelectorAll('.section-header').forEach((header) => {
+        const tag = header.querySelector('.section-tag');
+        const title = header.querySelector('.section-title');
+        const subtitle = header.querySelector('.section-subtitle');
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: header,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+          defaults: { ease: 'power2.out', force3D: true },
+        });
+
+        if (tag) tl.fromTo(tag, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 });
+        if (title) tl.fromTo(title, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.35');
+        if (subtitle) tl.fromTo(subtitle, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, '-=0.4');
+      });
+
+      // =============================================
+      // Destinations: Flip cards
+      // =============================================
+      gsap.fromTo('.dest-card-flip', {
+        y: 50,
+        opacity: 0,
       }, {
         y: 0,
         opacity: 1,
-        duration: 0.8,
-        stagger: 0.08,
+        duration: 1,
+        stagger: 0.15,
         ease: 'power2.out',
+        force3D: true,
         scrollTrigger: {
           trigger: '.destinations-grid',
-          start: 'top 90%',
+          start: 'top 85%',
           toggleActions: 'play none none none',
         },
-        onStart: () => {
-          gsap.set('.dest-card', { transition: 'none' });
-        },
-        onComplete: () => {
-          gsap.set('.dest-card', { clearProps: 'transition,transform' });
-        }
+        onComplete: () => addRevealed('.dest-card-flip'),
       });
 
-      // ---- Service Cards ----
-      gsap.fromTo('.service-card', {
-        y: 20,
-        opacity: 0
-      }, {
-        y: 0,
-        opacity: 1,
-        duration: 0.7,
-        stagger: 0.06,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.services-grid',
-          start: 'top 90%',
-          toggleActions: 'play none none none',
-        },
-        onStart: () => {
-          gsap.set('.service-card', { transition: 'none' });
-        },
-        onComplete: () => {
-          gsap.set('.service-card', { clearProps: 'transition,transform' });
-        }
-      });
-
-      // ---- Package Cards ----
-      gsap.fromTo('.package-card', {
-        y: 25,
-        opacity: 0,
-        scale: 0.98
-      }, {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 0.8,
-        stagger: 0.08,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.packages-grid',
-          start: 'top 90%',
-          toggleActions: 'play none none none',
-        },
-        onStart: () => {
-          gsap.set('.package-card', { transition: 'none' });
-        },
-        onComplete: () => {
-          gsap.set('.package-card', { clearProps: 'transition,transform,scale' });
-        }
-      });
-
-      // ---- Testimonial Cards ----
-      /*
-      gsap.fromTo('.testimonial-card', {
-        y: 20,
-        opacity: 0
-      }, {
-        y: 0,
-        opacity: 1,
-        duration: 0.7,
-        stagger: 0.08,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.testimonials-grid',
-          start: 'top 90%',
-          toggleActions: 'play none none none',
-        },
-        onStart: () => {
-          gsap.set('.testimonial-card', { transition: 'none' });
-        },
-        onComplete: () => {
-          gsap.set('.testimonial-card', { clearProps: 'transition,transform' });
-        }
-      });
-      */
-
-      // ---- Guide Steps ----
-      gsap.fromTo('.guide-step', {
-        y: 20,
-        opacity: 0
-      }, {
-        y: 0,
-        opacity: 1,
-        duration: 0.7,
-        stagger: 0.08,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.guide-timeline',
-          start: 'top 90%',
-          toggleActions: 'play none none none',
-        },
-        onStart: () => {
-          gsap.set('.guide-step', { transition: 'none' });
-        },
-        onComplete: () => {
-          gsap.set('.guide-step', { clearProps: 'transition,transform' });
-        }
-      });
-
-      // ---- Madinah Sanctuary Section ----
+      // =============================================
+      // Sanctuary: Slide in from sides
+      // =============================================
       gsap.fromTo('.sanctuary-model-col', {
-        x: -25,
-        opacity: 0
+        x: -60,
+        opacity: 0,
       }, {
         x: 0,
         opacity: 1,
-        duration: 0.8,
+        duration: 1,
         ease: 'power2.out',
+        force3D: true,
         scrollTrigger: {
           trigger: '.madinah-sanctuary',
-          start: 'top 92%',
+          start: 'top 85%',
           toggleActions: 'play none none none',
         },
       });
 
       gsap.fromTo('.sanctuary-content-col', {
-        x: 25,
-        opacity: 0
+        x: 60,
+        opacity: 0,
       }, {
         x: 0,
         opacity: 1,
-        duration: 0.8,
+        duration: 1,
         delay: 0.15,
         ease: 'power2.out',
+        force3D: true,
         scrollTrigger: {
           trigger: '.madinah-sanctuary',
-          start: 'top 92%',
+          start: 'top 85%',
           toggleActions: 'play none none none',
         },
       });
 
-      // ---- CTA Section ----
-      gsap.fromTo('.cta-content', {
-        y: 20,
-        opacity: 0
+      // =============================================
+      // Services: Cards fade up
+      // =============================================
+      gsap.fromTo('.service-card', {
+        y: 40,
+        opacity: 0,
       }, {
         y: 0,
         opacity: 1,
         duration: 0.8,
+        stagger: 0.1,
         ease: 'power2.out',
+        force3D: true,
+        scrollTrigger: {
+          trigger: '.services-grid',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+        onComplete: () => addRevealed('.service-card'),
+      });
+
+      // =============================================
+      // Guide: Steps cascade in
+      // =============================================
+      gsap.fromTo('.guide-step', {
+        y: 40,
+        opacity: 0,
+      }, {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.12,
+        ease: 'power2.out',
+        force3D: true,
+        scrollTrigger: {
+          trigger: '.guide-timeline',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+        onComplete: () => addRevealed('.guide-step'),
+      });
+
+      // =============================================
+      // Packages: Cards fade up
+      // =============================================
+      gsap.fromTo('.package-card', {
+        y: 50,
+        opacity: 0,
+      }, {
+        y: 0,
+        opacity: 1,
+        duration: 0.9,
+        stagger: 0.12,
+        ease: 'power2.out',
+        force3D: true,
+        scrollTrigger: {
+          trigger: '.packages-grid',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+        onComplete: () => addRevealed('.package-card'),
+      });
+
+      // =============================================
+      // CTA: Fade up
+      // =============================================
+      gsap.fromTo('.cta-content', {
+        y: 40,
+        opacity: 0,
+      }, {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: 'power2.out',
+        force3D: true,
         scrollTrigger: {
           trigger: '.cta-section',
-          start: 'top 90%',
+          start: 'top 85%',
           toggleActions: 'play none none none',
         },
       });
 
-      // ---- Footer ----
-      gsap.from('.footer-grid > div', {
-        y: 20,
-        opacity: 0,
+      // =============================================
+      // Footer: Columns stagger in
+      // =============================================
+      gsap.fromTo('.footer-grid > div', {
+        y: 30,
+        opacity: 0
+      }, {
+        y: 0,
+        opacity: 1,
         stagger: 0.08,
         duration: 0.7,
         ease: 'power2.out',
+        force3D: true,
         scrollTrigger: {
           trigger: '.footer',
-          start: 'top 96%',
+          start: 'top 92%',
           toggleActions: 'play none none none',
         },
       });
