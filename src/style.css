@@ -847,9 +847,55 @@ img {
     color: var(--color-text-secondary);
 }
 
+/* ===========================
+   Scroll Reveal: Initial Hidden States
+   Elements start invisible and GSAP reveals them on scroll.
+   =========================== */
+.section-header .section-tag,
+.section-header .section-title,
+.section-header .section-subtitle {
+    opacity: 0;
+    transform: translateY(30px);
+    will-change: transform, opacity;
+}
+
+.dest-card-flip,
+.service-card,
+.package-card,
+.guide-step {
+    opacity: 0;
+    transform: translateY(60px);
+    will-change: transform, opacity;
+}
+
+.sanctuary-model-col {
+    opacity: 0;
+    transform: translateX(-60px);
+    will-change: transform, opacity;
+}
+
+.sanctuary-content-col {
+    opacity: 0;
+    transform: translateX(60px);
+    will-change: transform, opacity;
+}
+
+.cta-content {
+    opacity: 0;
+    transform: translateY(50px);
+    will-change: transform, opacity;
+}
+
+.footer-grid > div {
+    opacity: 0;
+    transform: translateY(30px);
+    will-change: transform, opacity;
+}
+
 /* Utility: Re-enable transform transition after GSAP reveal completes */
 .revealed {
     transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base), background var(--transition-base) !important;
+    will-change: auto;
 }
 
 /* ===========================
@@ -2208,4 +2254,67 @@ img {
     color: #ffffff;
     border-color: var(--color-gold);
     box-shadow: 0 4px 15px rgba(201, 169, 110, 0.25);
+}
+
+/* ==========================================
+   Scroll To Top Button
+   ========================================== */
+.scroll-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(28, 26, 23, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(201, 169, 110, 0.3);
+    color: var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.8);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                background 0.3s ease, 
+                border-color 0.3s ease, 
+                color 0.3s ease,
+                box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.scroll-to-top svg {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-to-top:hover {
+    background: var(--color-gold);
+    color: #ffffff;
+    border-color: var(--color-gold);
+    box-shadow: 0 8px 25px rgba(201, 169, 110, 0.4);
+}
+
+.scroll-to-top:hover svg {
+    transform: translateY(-2px);
+}
+
+.scroll-to-top.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+@media (max-width: 768px) {
+    .scroll-to-top {
+        bottom: 24px;
+        right: 24px;
+        width: 44px;
+        height: 44px;
+    }
 }

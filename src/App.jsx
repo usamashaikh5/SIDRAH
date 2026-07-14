@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -17,6 +17,9 @@ import Footer from './components/Footer';
 
 export default function App() {
   const [selectedMonth, setSelectedMonth] = useState('September');
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const lenisRef = useRef(null);
+
   useEffect(() => {
     // 1. Initialize Lenis Smooth Scroll — tuned for butter-smooth feel
     const lenis = new Lenis({
@@ -28,10 +31,20 @@ export default function App() {
       touchMultiplier: 1.8,
     });
 
+    lenisRef.current = lenis;
+
     // 2. Integrate Lenis with GSAP
     gsap.registerPlugin(ScrollTrigger);
     
-    lenis.on('scroll', ScrollTrigger.update);
+    lenis.on('scroll', (e) => {
+      ScrollTrigger.update();
+      const scrollPos = e.scroll !== undefined ? e.scroll : window.scrollY;
+      if (scrollPos > 400) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    });
     
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
@@ -78,7 +91,7 @@ export default function App() {
       });
 
       // =============================================
-      // Hero Section
+      // Hero Section (immediate on load)
       // =============================================
       const heroTl = gsap.timeline({ defaults: { ease: 'power3.out', force3D: true } });
       heroTl
@@ -89,7 +102,7 @@ export default function App() {
         .fromTo('.hero-model', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2 }, '-=0.6');
 
       // =============================================
-      // Section Headers: Smooth cascade
+      // Section Headers: Tag → Title → Subtitle cascade
       // =============================================
       document.querySelectorAll('.section-header').forEach((header) => {
         const tag = header.querySelector('.section-tag');
@@ -105,22 +118,19 @@ export default function App() {
           defaults: { ease: 'power2.out', force3D: true },
         });
 
-        if (tag) tl.fromTo(tag, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 });
-        if (title) tl.fromTo(title, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.35');
-        if (subtitle) tl.fromTo(subtitle, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, '-=0.4');
+        if (tag) tl.to(tag, { y: 0, opacity: 1, duration: 0.7 });
+        if (title) tl.to(title, { y: 0, opacity: 1, duration: 0.9 }, '-=0.3');
+        if (subtitle) tl.to(subtitle, { y: 0, opacity: 1, duration: 0.7 }, '-=0.4');
       });
 
       // =============================================
-      // Destinations: Flip cards
+      // Destinations: Flip cards rise up
       // =============================================
-      gsap.fromTo('.dest-card-flip', {
-        y: 50,
-        opacity: 0,
-      }, {
+      gsap.to('.dest-card-flip', {
         y: 0,
         opacity: 1,
         duration: 1,
-        stagger: 0.15,
+        stagger: 0.2,
         ease: 'power2.out',
         force3D: true,
         scrollTrigger: {
@@ -134,13 +144,10 @@ export default function App() {
       // =============================================
       // Sanctuary: Slide in from sides
       // =============================================
-      gsap.fromTo('.sanctuary-model-col', {
-        x: -60,
-        opacity: 0,
-      }, {
+      gsap.to('.sanctuary-model-col', {
         x: 0,
         opacity: 1,
-        duration: 1,
+        duration: 1.1,
         ease: 'power2.out',
         force3D: true,
         scrollTrigger: {
@@ -150,14 +157,11 @@ export default function App() {
         },
       });
 
-      gsap.fromTo('.sanctuary-content-col', {
-        x: 60,
-        opacity: 0,
-      }, {
+      gsap.to('.sanctuary-content-col', {
         x: 0,
         opacity: 1,
-        duration: 1,
-        delay: 0.15,
+        duration: 1.1,
+        delay: 0.2,
         ease: 'power2.out',
         force3D: true,
         scrollTrigger: {
@@ -168,16 +172,13 @@ export default function App() {
       });
 
       // =============================================
-      // Services: Cards fade up
+      // Services: Cards rise up with stagger
       // =============================================
-      gsap.fromTo('.service-card', {
-        y: 40,
-        opacity: 0,
-      }, {
+      gsap.to('.service-card', {
         y: 0,
         opacity: 1,
-        duration: 0.8,
-        stagger: 0.1,
+        duration: 0.9,
+        stagger: 0.12,
         ease: 'power2.out',
         force3D: true,
         scrollTrigger: {
@@ -189,16 +190,13 @@ export default function App() {
       });
 
       // =============================================
-      // Guide: Steps cascade in
+      // Guide: Steps cascade in one by one
       // =============================================
-      gsap.fromTo('.guide-step', {
-        y: 40,
-        opacity: 0,
-      }, {
+      gsap.to('.guide-step', {
         y: 0,
         opacity: 1,
-        duration: 0.8,
-        stagger: 0.12,
+        duration: 0.9,
+        stagger: 0.15,
         ease: 'power2.out',
         force3D: true,
         scrollTrigger: {
@@ -210,16 +208,13 @@ export default function App() {
       });
 
       // =============================================
-      // Packages: Cards fade up
+      // Packages: Cards rise up with stagger
       // =============================================
-      gsap.fromTo('.package-card', {
-        y: 50,
-        opacity: 0,
-      }, {
+      gsap.to('.package-card', {
         y: 0,
         opacity: 1,
-        duration: 0.9,
-        stagger: 0.12,
+        duration: 1,
+        stagger: 0.15,
         ease: 'power2.out',
         force3D: true,
         scrollTrigger: {
@@ -233,10 +228,7 @@ export default function App() {
       // =============================================
       // CTA: Fade up
       // =============================================
-      gsap.fromTo('.cta-content', {
-        y: 40,
-        opacity: 0,
-      }, {
+      gsap.to('.cta-content', {
         y: 0,
         opacity: 1,
         duration: 1,
@@ -252,14 +244,11 @@ export default function App() {
       // =============================================
       // Footer: Columns stagger in
       // =============================================
-      gsap.fromTo('.footer-grid > div', {
-        y: 30,
-        opacity: 0
-      }, {
+      gsap.to('.footer-grid > div', {
         y: 0,
         opacity: 1,
-        stagger: 0.08,
-        duration: 0.7,
+        stagger: 0.1,
+        duration: 0.8,
         ease: 'power2.out',
         force3D: true,
         scrollTrigger: {
@@ -293,9 +282,10 @@ export default function App() {
 
     document.addEventListener('click', handleAnchorClick);
 
-    // Cleanups on unmount
+     // Cleanups on unmount
     return () => {
       lenis.destroy();
+      lenisRef.current = null;
       ctx.revert();
       document.removeEventListener('click', handleAnchorClick);
     };
@@ -313,6 +303,17 @@ export default function App() {
       {/* <Testimonials /> */}
       <Contact selectedMonth={selectedMonth} />
       <Footer />
+
+      {/* Scroll to Top Button */}
+      <button 
+        className={`scroll-to-top ${showScrollTop ? 'active' : ''}`}
+        onClick={() => lenisRef.current?.scrollTo(0, { duration: 1.5 })}
+        aria-label="Scroll to top"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+      </button>
     </>
   );
 }
