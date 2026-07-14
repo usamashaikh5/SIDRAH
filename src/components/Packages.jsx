@@ -1,6 +1,21 @@
 import React from 'react';
 
-export default function Packages() {
+export default function Packages({ selectedMonth, setSelectedMonth }) {
+  const months = ['September', 'October', 'November', 'December', 'January'];
+
+  const getWhatsAppLink = (month, packageType) => {
+    const baseMessage = `Assalamu Alaikum Hafiz Usama,
+
+I hope you're doing well. 🤲
+
+I am interested in booking the 7 Days Luxury Umrah Experience – ${month} Batch with the ${packageType} package.
+
+Could you please guide me through the next steps, including the booking process, payment details, and any documents required?
+
+Looking forward to your response. JazakAllahu Khair! 🌹`;
+
+    return `https://wa.me/919376879151?text=${encodeURIComponent(baseMessage)}`;
+  };
   return (
     <section id="packages" className="section packages">
       <div className="container">
@@ -10,12 +25,28 @@ export default function Packages() {
               <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
               <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
             </svg>
-            September Batch Packages
+            {selectedMonth} Batch Packages
           </span>
           <h2 className="section-title">Choose Your <span className="gold-text">Sharing Package</span></h2>
           <p className="section-subtitle">
             Affordable and transparent pricing tailored to your sharing preference. Rates are per person and include premium flight booking and luxury hotel stays.
           </p>
+        </div>
+
+        <div className="packages-batch-selector">
+          <span className="selector-label">Select Departure Batch:</span>
+          <div className="batch-buttons">
+            {months.map((month) => (
+              <button
+                key={month}
+                type="button"
+                className={`batch-btn ${selectedMonth === month ? 'active' : ''}`}
+                onClick={() => setSelectedMonth(month)}
+              >
+                {month} Batch
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="packages-grid">
@@ -75,7 +106,7 @@ export default function Packages() {
               </li>
             </ul>
             <a 
-              href="https://wa.me/919376879151?text=Assalamualaikum%20Hafiz%20Usama%20Shaikh%2C%20I%20am%20interested%20in%20booking%20the%20Double%20Sharing%20package%20for%20the%207%20Days%20Luxury%20Umrah%20Experience%20(September%20Batch).%20Please%20guide%20me%20on%20further%20steps." 
+              href={getWhatsAppLink(selectedMonth, 'Double Sharing')} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="btn btn-outline btn-block"
@@ -141,7 +172,7 @@ export default function Packages() {
               </li>
             </ul>
             <a 
-              href="https://wa.me/919376879151?text=Assalamualaikum%20Hafiz%20Usama%20Shaikh%2C%20I%20am%20interested%20in%20booking%20the%20Triple%20Sharing%20package%20for%20the%207%20Days%20Luxury%20Umrah%20Experience%20(September%20Batch).%20Please%20guide%20me%20on%20further%20steps." 
+              href={getWhatsAppLink(selectedMonth, 'Triple Sharing')} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="btn btn-primary btn-block"
@@ -206,7 +237,7 @@ export default function Packages() {
               </li>
             </ul>
             <a 
-              href="https://wa.me/919376879151?text=Assalamualaikum%20Hafiz%20Usama%20Shaikh%2C%20I%20am%20interested%20in%20booking%20the%20Quad%20Sharing%20package%20for%20the%207%20Days%20Luxury%20Umrah%20Experience%20(September%20Batch).%20Please%20guide%20me%20on%20further%20steps." 
+              href={getWhatsAppLink(selectedMonth, 'Quad Sharing')} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="btn btn-outline btn-block"

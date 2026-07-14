@@ -199,7 +199,8 @@ img {
     flex-direction: column;
     justify-content: center;
     line-height: 1.1;
-    margin-top: 10px; /* perfectly balanced visual vertical alignment */
+    margin-top: 10px;
+    /* perfectly balanced visual vertical alignment */
 }
 
 .logo-title {
@@ -209,11 +210,13 @@ img {
     color: var(--color-gold);
     letter-spacing: 0.5px;
     text-transform: none;
-    margin-bottom: -2px; /* safe elegant spacing without collapsing */
+    margin-bottom: -2px;
+    /* safe elegant spacing without collapsing */
 }
 
 .logo-subtitle {
-    font-family: var(--font-heading); /* Cinzel */
+    font-family: var(--font-heading);
+    /* Cinzel */
     font-size: 0.68rem;
     font-weight: 700;
     color: var(--color-text-secondary);
@@ -1337,6 +1340,14 @@ img {
     border-bottom: 1px solid var(--color-border);
 }
 
+.footer-logo {
+    margin-left: -20px;
+}
+
+.footer-logo img {
+    height: 130px;
+}
+
 .footer-brand p {
     font-size: 0.9rem;
     line-height: 1.7;
@@ -1944,4 +1955,58 @@ img {
         display: flex;
         justify-content: center;
     }
+}
+
+/* ==========================================
+   Batch Month Selector Styling
+   ========================================== */
+.packages-batch-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.selector-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.batch-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.batch-btn {
+    padding: 10px 24px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.batch-btn:hover {
+    border-color: var(--color-gold);
+    color: var(--color-gold-dark);
+    background: var(--color-gold-glow);
+}
+
+.batch-btn.active {
+    background: var(--color-gold);
+    color: #ffffff;
+    border-color: var(--color-gold);
+    box-shadow: 0 4px 15px rgba(201, 169, 110, 0.25);
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Contact() {
+export default function Contact({ selectedMonth }) {
   return (
     <section id="contact" className="section cta-section">
       <div className="cta-glow"></div>
@@ -12,7 +12,15 @@ export default function Contact() {
           </p>
           <div className="cta-buttons">
             <a 
-              href="https://wa.me/919376879151?text=Assalamualaikum%20Hafiz%20Usama%20Shaikh%2C%20I%20am%20interested%20in%20inquiring%20about%20the%207%20Days%20Luxury%20Umrah%20Experience%20(September%20Batch)%20with%20Sidrah%20Tours%20%26%20Travels.%20Could%20you%20please%20provide%20more%20details%3F" 
+              href={`https://wa.me/919376879151?text=${encodeURIComponent(`Assalamu Alaikum Hafiz Usama,
+
+I hope you're doing well. 🤲
+
+I am interested in booking the 7 Days Luxury Umrah Experience – ${selectedMonth} Batch.
+
+Could you please guide me through the next steps, including the booking process, payment details, and any documents required?
+
+Looking forward to your response. JazakAllahu Khair! 🌹`)}`} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="btn btn-primary btn-lg"

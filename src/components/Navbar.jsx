@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Navbar() {
+export default function Navbar({ selectedMonth }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -21,11 +21,7 @@ export default function Navbar() {
     <nav id="navbar" className={isScrolled ? 'scrolled' : ''}>
       <div className="nav-container">
         <a href="#" className="nav-logo">
-          <img src="/logo.png" alt="Makkah Madinah Logo" className="brand-logo-img" />
-          <div className="logo-text">
-            <span className="logo-title">Sidrah</span>
-            <span className="logo-subtitle">Tours & Travels</span>
-          </div>
+          <img src="/logo (2).png" alt="Sidrah Tours & Travels Logo" className="brand-logo-img" />
         </a>
         
         <ul className={`nav-links ${isOpen ? 'open' : ''}`} id="navLinks">
@@ -38,7 +34,15 @@ export default function Navbar() {
 
         <div className="nav-actions">
           <a 
-            href="https://wa.me/919376879151?text=Assalamualaikum%20Hafiz%20Usama%20Shaikh%2C%20I%20am%20interested%20in%20inquiring%20about%20the%207%20Days%20Luxury%20Umrah%20Experience%20(September%20Batch)%20with%20Sidrah%20Tours%20%26%20Travels.%20Could%20you%20please%20provide%20more%20details%3F" 
+            href={`https://wa.me/919376879151?text=${encodeURIComponent(`Assalamu Alaikum Hafiz Usama,
+
+I hope you're doing well. 🤲
+
+I am interested in booking the 7 Days Luxury Umrah Experience – ${selectedMonth} Batch.
+
+Could you please guide me through the next steps, including the booking process, payment details, and any documents required?
+
+Looking forward to your response. JazakAllahu Khair! 🌹`)}`} 
             target="_blank" 
             rel="noopener noreferrer" 
             className="nav-cta"

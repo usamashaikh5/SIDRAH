@@ -1,35 +1,7 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React from 'react';
 import KaabaViewer from './KaabaViewer';
 
-export default function Hero() {
-  const stat1Ref = useRef(null);
-  const stat2Ref = useRef(null);
-  const stat3Ref = useRef(null);
-
-  useEffect(() => {
-    // Stat counters count-up animation
-    const animateStat = (ref, target) => {
-      if (!ref.current) return;
-      const obj = { val: 0 };
-      gsap.to(obj, {
-        val: target,
-        duration: 2,
-        delay: 0.5,
-        ease: 'power2.out',
-        onUpdate: () => {
-          if (ref.current) {
-            ref.current.textContent = Math.floor(obj.val);
-          }
-        }
-      });
-    };
-
-    animateStat(stat1Ref, 15);
-    animateStat(stat2Ref, 50);
-    animateStat(stat3Ref, 98);
-  }, []);
-
+export default function Hero({ selectedMonth }) {
   return (
     <section id="hero" className="section hero">
       <div className="hero-bg-pattern"></div>
@@ -59,7 +31,15 @@ export default function Hero() {
               </svg>
             </a>
             <a 
-              href="https://wa.me/919376879151?text=Assalamualaikum%20Hafiz%20Usama%20Shaikh%2C%20I%20am%20interested%20in%20inquiring%20about%20the%207%20Days%20Luxury%20Umrah%20Experience%20(September%20Batch)%20with%20Sidrah%20Tours%20%26%20Travels.%20Could%20you%20please%20provide%20more%20details%3F" 
+              href={`https://wa.me/919376879151?text=${encodeURIComponent(`Assalamu Alaikum Hafiz Usama,
+
+I hope you're doing well. 🤲
+
+I am interested in booking the 7 Days Luxury Umrah Experience – ${selectedMonth} Batch.
+
+Could you please guide me through the next steps, including the booking process, payment details, and any documents required?
+
+Looking forward to your response. JazakAllahu Khair! 🌹`)}`} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="btn btn-outline"
@@ -71,22 +51,7 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="hero-stats">
-            <div className="hero-stat">
-              <span ref={stat1Ref} className="hero-stat-number">0</span><span className="hero-stat-suffix">+</span>
-              <span className="hero-stat-label">Years Experience</span>
-            </div>
-            <div className="hero-stat-divider"></div>
-            <div className="hero-stat">
-              <span ref={stat2Ref} className="hero-stat-number">0</span><span className="hero-stat-suffix">K+</span>
-              <span className="hero-stat-label">Happy Pilgrims</span>
-            </div>
-            <div className="hero-stat-divider"></div>
-            <div className="hero-stat">
-              <span ref={stat3Ref} className="hero-stat-number">0</span><span className="hero-stat-suffix">%</span>
-              <span className="hero-stat-label">Satisfaction</span>
-            </div>
-          </div>
+          {/* Stats section removed */}
         </div>
 
         {/* 3D Model Rendering Canvas Wrapper */}

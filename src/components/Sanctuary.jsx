@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Sanctuary() {
+export default function Sanctuary({ selectedMonth }) {
   return (
     <section id="madinah-sanctuary" className="section madinah-sanctuary">
       <div className="container">
@@ -24,7 +24,7 @@ export default function Sanctuary() {
             </div>
             <h2 className="sanctuary-title">Visit <span className="gold-text">Al-Masjid an-Nabawi</span> in Serene Comfort</h2>
             <p className="sanctuary-description">
-              Madinah Al-Munawwarah, the illuminated city of the Prophet Muhammad (PBUH). Our custom packages ensure you spend 3 peaceful days visiting the second holiest sanctuary in Islam.
+              Madinah Al-Munawwarah, the illuminated city of the Prophet Muhammad (PBUH). Our custom packages ensure you spend 3.5 peaceful days visiting the second holiest sanctuary in Islam.
             </p>
             <p className="sanctuary-description">
               Experience the tranquil beauty of the Green Dome, pray inside the sacred garden of Ar-Rawdah ash-Sharifah, and visit historic sites in Madinah with expert scholarly guides.
@@ -32,7 +32,7 @@ export default function Sanctuary() {
             
             <div className="sanctuary-highlights">
               <div className="sanctuary-highlight">
-                <span className="highlight-number">3</span>
+                <span className="highlight-number">3.5</span>
                 <span className="highlight-label">Days Stay in Madinah</span>
               </div>
               <div className="sanctuary-highlight">
@@ -47,7 +47,13 @@ export default function Sanctuary() {
             
             <div className="sanctuary-buttons">
               <a 
-                href="https://wa.me/919376879151?text=Assalamualaikum%20Hafiz%20Usama%20Shaikh%2C%20I%20am%20interested%20in%20the%207%20Days%20Luxury%20Umrah%20Experience%20(September%20Batch).%20Please%20provide%20more%20details%20about%20the%20Madinah%20stay." 
+                href={`https://wa.me/919376879151?text=${encodeURIComponent(`Assalamu Alaikum Hafiz Usama,
+
+I hope you're doing well. 🤲
+
+I am interested in the 7 Days Luxury Umrah Experience – ${selectedMonth} Batch. Could you please provide more details about the Madinah stay?
+
+Looking forward to your response. JazakAllahu Khair! 🌹`)}`} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="btn btn-primary"

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -11,11 +11,12 @@ import Sanctuary from './components/Sanctuary';
 import Services from './components/Services';
 import Guide from './components/Guide';
 import Packages from './components/Packages';
-import Testimonials from './components/Testimonials';
+// import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 export default function App() {
+  const [selectedMonth, setSelectedMonth] = useState('September');
   useEffect(() => {
     // 1. Initialize Lenis Smooth Scroll
     const lenis = new Lenis({
@@ -142,6 +143,7 @@ export default function App() {
       });
 
       // ---- Testimonial Cards ----
+      /*
       gsap.fromTo('.testimonial-card', {
         y: 20,
         opacity: 0
@@ -163,6 +165,7 @@ export default function App() {
           gsap.set('.testimonial-card', { clearProps: 'transition,transform' });
         }
       });
+      */
 
       // ---- Guide Steps ----
       gsap.fromTo('.guide-step', {
@@ -260,8 +263,9 @@ export default function App() {
       try {
         const target = document.querySelector(href);
         if (target) {
+          const isHero = href === '#hero';
           lenis.scrollTo(target, {
-            offset: -80,
+            offset: isHero ? 0 : -80,
             duration: 1.5,
           });
         }
@@ -282,15 +286,15 @@ export default function App() {
 
   return (
     <>
-      <Navbar />
-      <Hero />
+      <Navbar selectedMonth={selectedMonth} />
+      <Hero selectedMonth={selectedMonth} />
       <Destinations />
-      <Sanctuary />
+      <Sanctuary selectedMonth={selectedMonth} />
       <Services />
       <Guide />
-      <Packages />
-      <Testimonials />
-      <Contact />
+      <Packages selectedMonth={selectedMonth} setSelectedMonth={setSelectedMonth} />
+      {/* <Testimonials /> */}
+      <Contact selectedMonth={selectedMonth} />
       <Footer />
     </>
   );

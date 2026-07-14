@@ -41,7 +41,7 @@ export default function Destinations() {
                     <circle cx="12" cy="12" r="10" />
                     <path d="M12 8v4l3 3" />
                   </svg>
-                  4 Days Stay
+                  3.5 Days Stay
                 </span>
               </div>
               <a href="#packages" className="dest-card-link">
@@ -75,7 +75,7 @@ export default function Destinations() {
                     <circle cx="12" cy="12" r="10" />
                     <path d="M12 8v4l3 3" />
                   </svg>
-                  3 Days Stay
+                  3.5 Days Stay
                 </span>
               </div>
               <a href="#packages" className="dest-card-link">
