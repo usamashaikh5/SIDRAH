@@ -82,9 +82,9 @@ export default function App() {
           if (!navbar) return;
           const currentScroll = self.scroll();
           if (currentScroll > lastScroll && currentScroll > 400) {
-            gsap.to(navbar, { y: -100, duration: 0.3, ease: 'power2.in' });
+            gsap.to(navbar, { y: -100, duration: 0.3, overwrite: 'auto', ease: 'power2.in' });
           } else {
-            gsap.to(navbar, { y: 0, duration: 0.3, ease: 'power2.out' });
+            gsap.to(navbar, { y: 0, duration: 0.3, overwrite: 'auto', ease: 'power2.out' });
           }
           lastScroll = currentScroll;
         },
@@ -112,7 +112,7 @@ export default function App() {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: header,
-            start: 'top 85%',
+            start: 'top 88%',
             toggleActions: 'play none none none',
           },
           defaults: { ease: 'power2.out', force3D: true },
@@ -123,110 +123,239 @@ export default function App() {
         if (subtitle) tl.to(subtitle, { y: 0, opacity: 1, duration: 0.7 }, '-=0.4');
       });
 
-      // =============================================
-      // Destinations: Flip cards rise up
-      // =============================================
-      gsap.to('.dest-card-flip', {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        stagger: 0.2,
-        ease: 'power2.out',
-        force3D: true,
-        scrollTrigger: {
-          trigger: '.destinations-grid',
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-        },
-        onComplete: () => addRevealed('.dest-card-flip'),
+      // Initialize matchMedia for responsive animations
+      const mm = gsap.matchMedia();
+
+      // ----------------------------------------------------
+      // DESKTOP RESPONSIVE ANIMATIONS (1024px and up)
+      // ----------------------------------------------------
+      mm.add("(min-width: 1024px)", () => {
+        // Destinations: Flip cards rise up with stagger
+        gsap.to('.dest-card-flip', {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.2,
+          ease: 'power2.out',
+          force3D: true,
+          scrollTrigger: {
+            trigger: '.destinations-grid',
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+          onComplete: () => addRevealed('.dest-card-flip'),
+        });
+
+        // Sanctuary: Slide in from sides (X axis)
+        gsap.to('.sanctuary-model-col', {
+          x: 0,
+          opacity: 1,
+          duration: 1.1,
+          ease: 'power2.out',
+          force3D: true,
+          scrollTrigger: {
+            trigger: '.madinah-sanctuary',
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+        });
+
+        gsap.to('.sanctuary-content-col', {
+          x: 0,
+          opacity: 1,
+          duration: 1.1,
+          delay: 0.2,
+          ease: 'power2.out',
+          force3D: true,
+          scrollTrigger: {
+            trigger: '.madinah-sanctuary',
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+        });
+
+        // Services: Cards rise up with stagger
+        gsap.to('.service-card', {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          stagger: 0.12,
+          ease: 'power2.out',
+          force3D: true,
+          scrollTrigger: {
+            trigger: '.services-grid',
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+          onComplete: () => addRevealed('.service-card'),
+        });
+
+        // Guide: Steps cascade in one by one
+        gsap.to('.guide-step', {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          stagger: 0.15,
+          ease: 'power2.out',
+          force3D: true,
+          scrollTrigger: {
+            trigger: '.guide-timeline',
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+          onComplete: () => addRevealed('.guide-step'),
+        });
+
+        // Packages: Cards rise up with stagger
+        gsap.to('.package-card', {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.15,
+          ease: 'power2.out',
+          force3D: true,
+          scrollTrigger: {
+            trigger: '.packages-grid',
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+          onComplete: () => addRevealed('.package-card'),
+        });
+
+        // Footer: Columns stagger in
+        gsap.to('.footer-grid > div', {
+          y: 0,
+          opacity: 1,
+          stagger: 0.1,
+          duration: 0.8,
+          ease: 'power2.out',
+          force3D: true,
+          scrollTrigger: {
+            trigger: '.footer',
+            start: 'top 92%',
+            toggleActions: 'play none none none',
+          },
+        });
+      });
+
+      // ----------------------------------------------------
+      // MOBILE/TABLET RESPONSIVE ANIMATIONS (under 1024px)
+      // ----------------------------------------------------
+      mm.add("(max-width: 1023px)", () => {
+        // Destinations: Individual cards reveal as they enter viewport
+        gsap.utils.toArray('.dest-card-flip').forEach((card) => {
+          gsap.to(card, {
+            y: 0,
+            opacity: 1,
+            duration: 0.85,
+            ease: 'power2.out',
+            force3D: true,
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 88%',
+              toggleActions: 'play none none none',
+            },
+            onComplete: () => card.classList.add('revealed'),
+          });
+        });
+
+        // Sanctuary Columns: Slide vertically (Y) instead of horizontally (X) to prevent overflows
+        gsap.to('.sanctuary-model-col', {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          ease: 'power2.out',
+          force3D: true,
+          scrollTrigger: {
+            trigger: '.sanctuary-model-col',
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+          },
+        });
+
+        gsap.to('.sanctuary-content-col', {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          ease: 'power2.out',
+          force3D: true,
+          scrollTrigger: {
+            trigger: '.sanctuary-content-col',
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+          },
+        });
+
+        // Services: Individual cards reveal as they enter viewport
+        gsap.utils.toArray('.service-card').forEach((card) => {
+          gsap.to(card, {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power2.out',
+            force3D: true,
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 88%',
+              toggleActions: 'play none none none',
+            },
+            onComplete: () => card.classList.add('revealed'),
+          });
+        });
+
+        // Guide Steps: Individual steps reveal as they enter viewport
+        gsap.utils.toArray('.guide-step').forEach((step) => {
+          gsap.to(step, {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power2.out',
+            force3D: true,
+            scrollTrigger: {
+              trigger: step,
+              start: 'top 88%',
+              toggleActions: 'play none none none',
+            },
+            onComplete: () => step.classList.add('revealed'),
+          });
+        });
+
+        // Packages: Individual cards reveal as they enter viewport
+        gsap.utils.toArray('.package-card').forEach((card) => {
+          gsap.to(card, {
+            y: 0,
+            opacity: 1,
+            duration: 0.85,
+            ease: 'power2.out',
+            force3D: true,
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 88%',
+              toggleActions: 'play none none none',
+            },
+            onComplete: () => card.classList.add('revealed'),
+          });
+        });
+
+        // Footer columns: Individual reveal as they enter viewport
+        gsap.utils.toArray('.footer-grid > div').forEach((col) => {
+          gsap.to(col, {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            ease: 'power2.out',
+            force3D: true,
+            scrollTrigger: {
+              trigger: col,
+              start: 'top 95%',
+              toggleActions: 'play none none none',
+            },
+          });
+        });
       });
 
       // =============================================
-      // Sanctuary: Slide in from sides
-      // =============================================
-      gsap.to('.sanctuary-model-col', {
-        x: 0,
-        opacity: 1,
-        duration: 1.1,
-        ease: 'power2.out',
-        force3D: true,
-        scrollTrigger: {
-          trigger: '.madinah-sanctuary',
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-        },
-      });
-
-      gsap.to('.sanctuary-content-col', {
-        x: 0,
-        opacity: 1,
-        duration: 1.1,
-        delay: 0.2,
-        ease: 'power2.out',
-        force3D: true,
-        scrollTrigger: {
-          trigger: '.madinah-sanctuary',
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-        },
-      });
-
-      // =============================================
-      // Services: Cards rise up with stagger
-      // =============================================
-      gsap.to('.service-card', {
-        y: 0,
-        opacity: 1,
-        duration: 0.9,
-        stagger: 0.12,
-        ease: 'power2.out',
-        force3D: true,
-        scrollTrigger: {
-          trigger: '.services-grid',
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-        },
-        onComplete: () => addRevealed('.service-card'),
-      });
-
-      // =============================================
-      // Guide: Steps cascade in one by one
-      // =============================================
-      gsap.to('.guide-step', {
-        y: 0,
-        opacity: 1,
-        duration: 0.9,
-        stagger: 0.15,
-        ease: 'power2.out',
-        force3D: true,
-        scrollTrigger: {
-          trigger: '.guide-timeline',
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-        },
-        onComplete: () => addRevealed('.guide-step'),
-      });
-
-      // =============================================
-      // Packages: Cards rise up with stagger
-      // =============================================
-      gsap.to('.package-card', {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        stagger: 0.15,
-        ease: 'power2.out',
-        force3D: true,
-        scrollTrigger: {
-          trigger: '.packages-grid',
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-        },
-        onComplete: () => addRevealed('.package-card'),
-      });
-
-      // =============================================
-      // CTA: Fade up
+      // CTA: Fade up (Shared behavior)
       // =============================================
       gsap.to('.cta-content', {
         y: 0,
@@ -237,23 +366,6 @@ export default function App() {
         scrollTrigger: {
           trigger: '.cta-section',
           start: 'top 85%',
-          toggleActions: 'play none none none',
-        },
-      });
-
-      // =============================================
-      // Footer: Columns stagger in
-      // =============================================
-      gsap.to('.footer-grid > div', {
-        y: 0,
-        opacity: 1,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: 'power2.out',
-        force3D: true,
-        scrollTrigger: {
-          trigger: '.footer',
-          start: 'top 92%',
           toggleActions: 'play none none none',
         },
       });

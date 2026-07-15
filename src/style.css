@@ -851,45 +851,55 @@ img {
    Scroll Reveal: Initial Hidden States
    Elements start invisible and GSAP reveals them on scroll.
    =========================== */
-.section-header .section-tag,
-.section-header .section-title,
-.section-header .section-subtitle {
+.js-enabled .section-header .section-tag,
+.js-enabled .section-header .section-title,
+.js-enabled .section-header .section-subtitle {
     opacity: 0;
     transform: translateY(30px);
     will-change: transform, opacity;
 }
 
-.dest-card-flip,
-.service-card,
-.package-card,
-.guide-step {
+.js-enabled .dest-card-flip,
+.js-enabled .service-card,
+.js-enabled .package-card,
+.js-enabled .guide-step {
     opacity: 0;
     transform: translateY(60px);
     will-change: transform, opacity;
 }
 
-.sanctuary-model-col {
+.js-enabled .sanctuary-model-col {
     opacity: 0;
     transform: translateX(-60px);
     will-change: transform, opacity;
 }
 
-.sanctuary-content-col {
+.js-enabled .sanctuary-content-col {
     opacity: 0;
     transform: translateX(60px);
     will-change: transform, opacity;
 }
 
-.cta-content {
+.js-enabled .cta-content {
     opacity: 0;
     transform: translateY(50px);
     will-change: transform, opacity;
 }
 
-.footer-grid > div {
+.js-enabled .footer-grid > div {
     opacity: 0;
     transform: translateY(30px);
     will-change: transform, opacity;
+}
+
+@media (max-width: 1023px) {
+    .js-enabled .sanctuary-model-col {
+        transform: translateY(45px) translateX(0);
+    }
+    
+    .js-enabled .sanctuary-content-col {
+        transform: translateY(45px) translateX(0);
+    }
 }
 
 /* Utility: Re-enable transform transition after GSAP reveal completes */
@@ -2249,11 +2259,48 @@ img {
     background: var(--color-gold-glow);
 }
 
+.batch-btn:active {
+    transform: scale(0.96);
+}
+
 .batch-btn.active {
     background: var(--color-gold);
     color: #ffffff;
     border-color: var(--color-gold);
     box-shadow: 0 4px 15px rgba(201, 169, 110, 0.25);
+}
+
+@media (max-width: 640px) {
+    .packages-batch-selector {
+        padding: 0;
+        margin-bottom: 32px;
+        align-items: stretch;
+    }
+    
+    .batch-buttons {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        padding: 4px 20px 12px 20px;
+        gap: 10px;
+        scrollbar-width: none;
+    }
+    
+    .batch-buttons::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .batch-btn {
+        flex: 0 0 auto;
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        width: auto;
+    }
 }
 
 /* ==========================================
