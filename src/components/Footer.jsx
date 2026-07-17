@@ -53,6 +53,13 @@ export default function Footer() {
           <div className="footer-contact">
             <h4>Contact Us</h4>
             <ul>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: '4px' }}>
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span>601, 6th Floor, Yusuf Apartment, Topiwala Ni Pole, Kalupur, Ahmedabad, Gujarat 380001</span>
+              </li>
               <li>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />

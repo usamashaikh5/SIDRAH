@@ -1,7 +1,8 @@
 import React from 'react';
+import { getActiveMonths } from '../utils/monthHelper';
 
 export default function Packages({ selectedMonth, setSelectedMonth }) {
-  const months = ['September', 'October', 'November', 'December', 'January'];
+  const months = getActiveMonths();
 
   const getWhatsAppLink = (month, packageType) => {
     const baseMessage = `Assalamu Alaikum Hafiz Usama,
@@ -29,7 +30,7 @@ Looking forward to your response. JazakAllahu Khair! 🌹`;
           </span>
           <h2 className="section-title">Choose Your <span className="gold-text">Sharing Package</span></h2>
           <p className="section-subtitle">
-            Affordable and transparent pricing tailored to your sharing preference. Rates are per person and include premium flight booking and luxury hotel stays.
+            Affordable and transparent pricing tailored to your sharing preference. Rates are per person and include premium flight booking (Ahmedabad departures) and luxury hotel stays.
           </p>
         </div>
 

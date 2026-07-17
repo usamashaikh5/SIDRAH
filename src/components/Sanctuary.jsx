@@ -8,7 +8,7 @@ export default function Sanctuary({ selectedMonth }) {
           {/* Left Column: Sanctuary Image */}
           <div className="sanctuary-model-col" data-anim="fade-up">
             <div className="sanctuary-image-wrapper">
-              <img src="/madinah_sanctuary_bg.png" alt="Masjid an-Nabawi Madinah" className="sanctuary-static-image" />
+              <img src="/madinah_sanctuary_bg.png" alt="Al-Masjid an-Nabawi in Madinah - Sidrah Tours &amp; Travels Luxury Umrah Package" className="sanctuary-static-image" />
             </div>
           </div>
           

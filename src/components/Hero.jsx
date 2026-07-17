@@ -19,8 +19,7 @@ export default function Hero({ selectedMonth }) {
             7 Days <span className="gold-text">Luxury Umrah</span> Experience
           </h1>
           <p className="hero-description">
-            Specially designed for working professionals. Just take 5 days leave.
-            Journey starts from Saturday, return next Sunday. Your trusted partner for a blessed Umrah journey.
+            Specially designed for working professionals from Ahmedabad &amp; Gujarat. Just take 5 days leave (Saturday to next Sunday). Your trusted local partner for a blessed luxury Umrah journey.
           </p>
           
           <div className="hero-buttons">

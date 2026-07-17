@@ -8,7 +8,7 @@ export default function Contact({ selectedMonth }) {
         <div className="cta-content" data-anim="fade-up">
           <h2>Begin Your Sacred Journey Today</h2>
           <p>
-            Join the September Batch with Sidrah Tours & Travels. Experience luxury hospitality, 5★ accommodations steps from Haramain, and expert scholarly guidance throughout your pilgrimage.
+            Join the upcoming batch with Sidrah Tours &amp; Travels, the leading luxury Umrah tour operator in Ahmedabad. Experience luxury hospitality, 5★ accommodations steps from Haramain, bullet train convenience, and expert scholarly guidance throughout your pilgrimage.
           </p>
           <div className="cta-buttons">
             <a 

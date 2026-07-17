@@ -24,7 +24,7 @@ export default function Destinations() {
             <div className="dest-card-inner">
               <div className="dest-card-front">
                 <div className="dest-card-bg-wrap">
-                  <img src="/destination_makkah.png" alt="Holy Kaaba Makkah" className="dest-card-bg" />
+                  <img src="/destination_makkah.png" alt="Holy Kaaba in Makkah - Premium Umrah Package from Ahmedabad" className="dest-card-bg" />
                 </div>
                 <div className="dest-card-overlay"></div>
                 <div className="dest-card-front-content">
@@ -100,7 +100,7 @@ export default function Destinations() {
             <div className="dest-card-inner">
               <div className="dest-card-front">
                 <div className="dest-card-bg-wrap">
-                  <img src="/destination_madinah.png" alt="Masjid an-Nabawi Madinah" className="dest-card-bg" />
+                  <img src="/destination_madinah.png" alt="Masjid an-Nabawi in Madinah - Sidrah Tours &amp; Travels Sacred Destination" className="dest-card-bg" />
                 </div>
                 <div className="dest-card-overlay"></div>
                 <div className="dest-card-front-content">

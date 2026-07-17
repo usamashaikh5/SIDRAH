@@ -3,6 +3,8 @@ import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import { getActiveMonths } from './utils/monthHelper';
+
 // Import Components
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -16,7 +18,8 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 export default function App() {
-  const [selectedMonth, setSelectedMonth] = useState('September');
+  const activeMonths = getActiveMonths();
+  const [selectedMonth, setSelectedMonth] = useState(activeMonths[0]);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const lenisRef = useRef(null);
 
