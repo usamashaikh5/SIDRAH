@@ -58,7 +58,7 @@ export default function Footer() {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-                <span>601, 6th Floor, Yusuf Apartment, Topiwala Ni Pole, Kalupur, Ahmedabad, Gujarat 380001</span>
+                <span>Kalupur, Ahmedabad, Gujarat 380001</span>
               </li>
               <li>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
