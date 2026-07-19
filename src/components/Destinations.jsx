@@ -56,7 +56,7 @@ export default function Destinations() {
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                           <polyline points="20 6 9 17 4 12" />
                         </svg>
-                        Guided Ziyarat Tours
+                        Guided Umrah
                       </li>
                       <li>
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
@@ -80,7 +80,7 @@ export default function Destinations() {
                           <circle cx="12" cy="12" r="10" />
                           <path d="M12 8v4l3 3" />
                         </svg>
-                        3.5 Days Stay
+                        3 Days Stay
                       </span>
                     </div>
                     <a href="#packages" className="dest-card-link">
