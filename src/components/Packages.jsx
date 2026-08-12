@@ -35,7 +35,7 @@ Looking forward to your response. JazakAllahu Khair! 🌹`;
         </div>
 
         <div className="packages-batch-selector">
-          <span className="selector-label">Select Departure Batch:</span>
+          /*<span className="selector-label">Select Departure Batch:</span>
           <div className="batch-buttons">
             {months.map((month) => (
               <button
@@ -47,7 +47,7 @@ Looking forward to your response. JazakAllahu Khair! 🌹`;
                 {month} Batch
               </button>
             ))}
-          </div>
+          </div>*/
         </div>
 
         <div className="packages-grid">
