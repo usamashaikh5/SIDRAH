@@ -109,7 +109,7 @@ Looking forward to your response. JazakAllahu Khair! 🌹`;
               <span className="amount">1,39,000</span>
               <span className="period">/person</span>
             </div>
-            <p className="package-desc">An excellent balance of affordability and comfort. Ideal for families or small groups of friends.</p>
+            <p className="package-desc">An excellent balance of affordability and comfort. Ideal for families or small groups of friends and couples alike.</p>
 
             <ul className="package-features">
               <li>
