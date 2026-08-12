@@ -79,15 +79,16 @@ export default function Services() {
           {/* Card 6 */}
           <div className="service-card" data-anim="fade-up">
             <div className="service-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M23 21v-2a4 4 0 00-3-3.87" />
-                <path d="M16 3.13a4 4 0 010 7.75" />
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" >
+                <path d="M4 15h16l-1-7a3 3 0 00-3-2H8a3 3 0 00-3 2l-1 7z" />
+                <path d="M4 15v2a2 2 0 002 2h12a2 2 0 002-2v-2" />
+                <circle cx="7.5" cy="17" r="1" />
+                <circle cx="16.5" cy="17" r="1" />
+                <path d="M7 10h10M9 6V4M15 6V4" />
               </svg>
             </div>
-            <h3>Group Packages</h3>
-            <p>Specially curated group tours that foster community bonds while providing personalized attention to each pilgrim.</p>
+            <h3>Bullet Train Experience</h3>
+            <p>Enjoy a fast, comfortable, and memorable bullet train journey, connecting you smoothly between destinations with premium convenience.</p>
           </div>
         </div>
       </div>
