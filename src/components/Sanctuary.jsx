@@ -32,7 +32,7 @@ export default function Sanctuary({ selectedMonth }) {
             
             <div className="sanctuary-highlights">
               <div className="sanctuary-highlight">
-                <span className="highlight-number">3.5</span>
+                <span className="highlight-number">4</span>
                 <span className="highlight-label">Days Stay in Madinah</span>
               </div>
               <div className="sanctuary-highlight">
