@@ -44,14 +44,18 @@ export default function Services() {
           {/* Card 3 */}
           <div className="service-card" data-anim="fade-up">
             <div className="service-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" >
+                <path d="M4 15h16l-1-7a3 3 0 00-3-2H8a3 3 0 00-3 2l-1 7z" />
+                <path d="M4 15v2a2 2 0 002 2h12a2 2 0 002-2v-2" />
+                <circle cx="7.5" cy="17" r="1" />
+                <circle cx="16.5" cy="17" r="1" />
+                <path d="M7 10h10M9 6V4M15 6V4" />
               </svg>
             </div>
-            <h3>Guided Tours</h3>
-            <p>Knowledgeable scholars and experienced guides who bring the history and significance of each sacred site to life.</p>
+            <h3>Bullet Train Experience</h3>
+            <p>Enjoy a fast, comfortable, and memorable bullet train journey, connecting you smoothly between destinations with premium convenience.</p>
           </div>
+          
 
           {/* Card 4 */}
           <div className="service-card" data-anim="fade-up">
@@ -79,16 +83,13 @@ export default function Services() {
           {/* Card 6 */}
           <div className="service-card" data-anim="fade-up">
             <div className="service-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" >
-                <path d="M4 15h16l-1-7a3 3 0 00-3-2H8a3 3 0 00-3 2l-1 7z" />
-                <path d="M4 15v2a2 2 0 002 2h12a2 2 0 002-2v-2" />
-                <circle cx="7.5" cy="17" r="1" />
-                <circle cx="16.5" cy="17" r="1" />
-                <path d="M7 10h10M9 6V4M15 6V4" />
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
               </svg>
             </div>
-            <h3>Bullet Train Experience</h3>
-            <p>Enjoy a fast, comfortable, and memorable bullet train journey, connecting you smoothly between destinations with premium convenience.</p>
+            <h3>Guided Tours</h3>
+            <p>Knowledgeable scholars and experienced guides who bring the history and significance of each sacred site to life.</p>
           </div>
         </div>
       </div>
