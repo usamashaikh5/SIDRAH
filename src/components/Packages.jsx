@@ -56,25 +56,10 @@ Looking forward to your response. JazakAllahu Khair! 🌹`;
             <div className="package-tier">Double Sharing</div>
             <div className="package-price">
               <span className="currency">₹</span>
-              <span className="amount">1,40,367</span>
-              <span className="period">/person starting</span>
+              <span className="amount">1,49,000</span>
+              <span className="period">/person</span>
             </div>
             <p className="package-desc">Perfect for couples or pairs seeking a premium, personal, and comfortable experience with maximum privacy.</p>
-            
-            <div className="package-meal-options">
-              <div className="meal-option">
-                <span className="meal-label">Room Only</span>
-                <span className="meal-price">₹1,40,367</span>
-              </div>
-              <div className="meal-option">
-                <span className="meal-label">With Breakfast</span>
-                <span className="meal-price">₹1,48,367</span>
-              </div>
-              <div className="meal-option">
-                <span className="meal-label">Full Board (B+L+D)</span>
-                <span className="meal-price">₹1,60,367</span>
-              </div>
-            </div>
 
             <ul className="package-features">
               <li>
@@ -118,29 +103,13 @@ Looking forward to your response. JazakAllahu Khair! 🌹`;
 
           {/* Triple Sharing (Featured) */}
           <div className="package-card package-card-featured" data-anim="fade-up">
-            <div className="package-badge">Most Popular</div>
             <div className="package-tier">Triple Sharing</div>
             <div className="package-price">
               <span className="currency">₹</span>
-              <span className="amount">1,33,367</span>
-              <span className="period">/person starting</span>
+              <span className="amount">1,39,000</span>
+              <span className="period">/person</span>
             </div>
             <p className="package-desc">An excellent balance of affordability and comfort. Ideal for families or small groups of friends.</p>
-            
-            <div className="package-meal-options">
-              <div className="meal-option">
-                <span className="meal-label">Room Only</span>
-                <span className="meal-price">₹1,33,367</span>
-              </div>
-              <div className="meal-option">
-                <span className="meal-label">With Breakfast</span>
-                <span className="meal-price">₹1,41,367</span>
-              </div>
-              <div className="meal-option">
-                <span className="meal-label">Full Board (B+L+D)</span>
-                <span className="meal-price">₹1,53,367</span>
-              </div>
-            </div>
 
             <ul className="package-features">
               <li>
@@ -184,28 +153,14 @@ Looking forward to your response. JazakAllahu Khair! 🌹`;
 
           {/* Quad Sharing */}
           <div className="package-card" data-anim="fade-up">
+            <div className="package-badge">Most Popular</div>
             <div className="package-tier">Quad Sharing</div>
             <div className="package-price">
               <span className="currency">₹</span>
-              <span className="amount">1,27,367</span>
-              <span className="period">/person starting</span>
+              <span className="amount">1,29,000</span>
+              <span className="period">/person</span>
             </div>
             <p className="package-desc">Best value package. Great choice for families, larger groups, or budget-conscious pilgrims seeking luxury service.</p>
-            
-            <div className="package-meal-options">
-              <div className="meal-option">
-                <span className="meal-label">Room Only</span>
-                <span className="meal-price">₹1,27,367</span>
-              </div>
-              <div className="meal-option">
-                <span className="meal-label">With Breakfast</span>
-                <span className="meal-price">₹1,35,367</span>
-              </div>
-              <div className="meal-option">
-                <span className="meal-label">Full Board (B+L+D)</span>
-                <span className="meal-price">₹1,47,367</span>
-              </div>
-            </div>
 
             <ul className="package-features">
               <li>
