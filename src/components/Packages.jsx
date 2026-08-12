@@ -58,15 +58,16 @@ Looking forward to your response. JazakAllahu Khair! 🌹`;
       
 
         <div className="packages-grid">
-          {/* Double Sharing */}
+          {/* Quad Sharing */}
           <div className="package-card" data-anim="fade-up">
-            <div className="package-tier">Double Sharing</div>
+            <div className="package-badge">Most Popular</div>
+            <div className="package-tier">Quad Sharing</div>
             <div className="package-price">
               <span className="currency">₹</span>
-              <span className="amount">1,49,000</span>
+              <span className="amount">1,29,000</span>
               <span className="period">/person</span>
             </div>
-            <p className="package-desc">Perfect for couples or pairs seeking a premium, personal, and comfortable experience with maximum privacy.</p>
+            <p className="package-desc">Best value package. Great choice for families, larger groups, or budget-conscious pilgrims seeking luxury service.</p>
 
             <ul className="package-features">
               <li>
@@ -99,12 +100,12 @@ Looking forward to your response. JazakAllahu Khair! 🌹`;
               </li>
             </ul>
             <a 
-              href={getWhatsAppLink(selectedMonth, 'Double Sharing')} 
+              href={getWhatsAppLink(selectedMonth, 'Quad Sharing')} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="btn btn-outline btn-block"
             >
-              Book Double Sharing
+              Book Quad Sharing
             </a>
           </div>
 
@@ -158,16 +159,15 @@ Looking forward to your response. JazakAllahu Khair! 🌹`;
             </a>
           </div>
 
-          {/* Quad Sharing */}
+          {/* Double Sharing */}
           <div className="package-card" data-anim="fade-up">
-            <div className="package-badge">Most Popular</div>
-            <div className="package-tier">Quad Sharing</div>
+            <div className="package-tier">Double Sharing</div>
             <div className="package-price">
               <span className="currency">₹</span>
-              <span className="amount">1,29,000</span>
+              <span className="amount">1,49,000</span>
               <span className="period">/person</span>
             </div>
-            <p className="package-desc">Best value package. Great choice for families, larger groups, or budget-conscious pilgrims seeking luxury service.</p>
+            <p className="package-desc">Perfect for couples or pairs seeking a premium, personal, and comfortable experience with maximum privacy.</p>
 
             <ul className="package-features">
               <li>
@@ -200,14 +200,16 @@ Looking forward to your response. JazakAllahu Khair! 🌹`;
               </li>
             </ul>
             <a 
-              href={getWhatsAppLink(selectedMonth, 'Quad Sharing')} 
+              href={getWhatsAppLink(selectedMonth, 'Double Sharing')} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="btn btn-outline btn-block"
             >
-              Book Quad Sharing
+              Book Double Sharing
             </a>
           </div>
+
+          
         </div>
       </div>
     </section>
