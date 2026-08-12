@@ -36,10 +36,8 @@ Looking forward to your response. JazakAllahu Khair! 🌹`;
 
         <div className="packages-batch-selector">
           <button
-                {/* key={month} */}
                 type="button"
-                className={`batch-btn active`}
-                {/* onClick={() => setSelectedMonth(month)} */}
+                className="batch-btn active"
               >
                 19th Sep - 27 Sep
               </button>
